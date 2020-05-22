@@ -12,6 +12,7 @@ func main() {
 	tds := requestFeed.New()
 
 	r := chi.NewRouter()
+	port := ":3000"
 
 	r.Get("/", func(w http.ResponseWriter, r *http.Request){
 		w.Write([]byte("Welcome to the Help Me API Server"))
@@ -32,6 +33,6 @@ func main() {
 		w.Write([]byte("Thanks for the new request!"))
 	})
 
-	fmt.Println("Starting help-me-api server")
-	http.ListenAndServe(":3000", r)
+	fmt.Println("Starting help-me-api server on port " + port)
+	http.ListenAndServe(port, r)
 }
